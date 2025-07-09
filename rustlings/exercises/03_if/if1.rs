@@ -4,6 +4,11 @@ fn bigger(a: i32, b: i32) -> i32 {
     // Do not use:
     // - another function call
     // - additional variables
+    let rel = a > b;
+    match rel {
+        true => a,
+        false => b
+    } 
 }
 
 fn main() {

@@ -11,6 +11,16 @@
 // TODO: Write a function that calculates the price of an order of apples given
 // the quantity bought.
 // fn calculate_price_of_apples(???) -> ??? { ??? }
+fn calculate_price_of_apples(quantity: i32) -> i32 {
+    let relation = quantity > 40;
+    let total = match relation {
+        true => quantity,
+        false => 2 * quantity
+    };
+    total
+} 
+
+
 
 fn main() {
     // You can optionally experiment here.
