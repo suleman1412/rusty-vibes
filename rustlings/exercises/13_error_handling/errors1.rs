@@ -4,12 +4,11 @@
 // construct to `Option` that can be used to express error conditions. Change
 // the function signature and body to return `Result<String, String>` instead
 // of `Option<String>`.
-fn generate_nametag_text(name: String) -> Option<String> {
+fn generate_nametag_text(name: String) -> Result<String, String> {
     if name.is_empty() {
-        // Empty names aren't allowed
-        None
+        Err("Empty names aren't allowed".to_string())
     } else {
-        Some(format!("Hi! My name is {name}"))
+        Ok("Hi! My name is ".to_string() + &name)
     }
 }
 
@@ -27,6 +26,27 @@ mod tests {
             generate_nametag_text("Beyoncé".to_string()).as_deref(),
             Ok("Hi! My name is Beyoncé"),
         );
+    }
+
+    // My tests
+    #[test]
+    fn generate_nametag_for_suleman(){
+        assert_eq!(
+            generate_nametag_text("Suleman".to_string()).as_deref(), 
+            Ok("Hi! My name is Suleman")
+        )
+    }
+
+    // My tests
+    #[test]
+    fn generate_empty(){
+        let random_strs = vec!["suleman", "tanis", "bruhdfsaf"];
+
+        for i in random_strs {
+            if let Ok(valid_name) = generate_nametag_text(i.to_string()){
+                assert_eq!(valid_name, "Hi! My name is ".to_string() + i);
+            }
+        }
     }
 
     #[test]
