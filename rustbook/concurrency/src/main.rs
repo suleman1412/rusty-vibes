@@ -13,7 +13,7 @@ fn main(){
     });
     println!("{threads}");
     // Declaring an inf loop to see the spawned threads
-    loop {
-        
+    for i in 1..=threads{
+            println!("hi from main thread {i}");
     }
 }

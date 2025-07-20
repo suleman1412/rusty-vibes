@@ -17,6 +17,15 @@ fn abs_all(input: &mut Cow<[i32]>) {
 
 fn main() {
     // You can optionally experiment here.
+
+    // Notes:
+    // If Cow is initialized owning the variable
+    // => Cow::Owned()
+    // If Cow initialized borrowing the variable
+    // => Cow::Borrowed()
+    // If there are any changes to be made or manipulate the values of the variable, Cow clones it using .to_mut() 
+    // => Cow::Owned()
+     
 }
 
 #[cfg(test)]
@@ -39,7 +48,7 @@ mod tests {
         let mut input = Cow::from(&vec);
         abs_all(&mut input);
         // TODO: Replace `todo!()` with `Cow::Owned(_)` or `Cow::Borrowed(_)`.
-        assert!(matches!(input, todo!()));
+        assert!(matches!(input, Cow::Borrowed(_)));
     }
 
     #[test]
@@ -52,7 +61,7 @@ mod tests {
         let mut input = Cow::from(vec);
         abs_all(&mut input);
         // TODO: Replace `todo!()` with `Cow::Owned(_)` or `Cow::Borrowed(_)`.
-        assert!(matches!(input, todo!()));
+        assert!(matches!(input, Cow::Owned(_)));
     }
 
     #[test]
@@ -64,6 +73,6 @@ mod tests {
         let mut input = Cow::from(vec);
         abs_all(&mut input);
         // TODO: Replace `todo!()` with `Cow::Owned(_)` or `Cow::Borrowed(_)`.
-        assert!(matches!(input, todo!()));
+        assert!(matches!(input, Cow::Owned(_)));
     }
 }
